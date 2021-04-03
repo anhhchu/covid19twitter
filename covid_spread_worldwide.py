@@ -4,7 +4,7 @@ Create a new aggregation for covid 19 spread worldwide based on bigquery-public-
 """
 
 from google.cloud import bigquery
-from google.cloud.bigquery import job
+from google.cloud.bigquery import *
 from google.cloud.bigquery.table import *
 
 # Create a new Google BigQuery client using Google Cloud Platform project
@@ -21,11 +21,11 @@ table_ref = dataset.table('monthly')
 # The table needs a schema before it can be created and accept data.
 # We create an ordered list of the columns using SchemaField objects.
 schema = []
-schema.append(SchemaField("countries_and_territories", "string"))
-schema.append(SchemaField("year", "integer"))
-schema.append(SchemaField("month", "integer"))
-schema.append(SchemaField("total_cases", "integer"))
-schema.append(SchemaField("total_deaths", "integer"))
+schema.append(schema.SchemaField("countries_and_territories", "string"))
+schema.append(schema.SchemaField("year", "integer"))
+schema.append(schema.SchemaField("month", "integer"))
+schema.append(schema.SchemaField("total_cases", "integer"))
+schema.append(schema.SchemaField("total_deaths", "integer"))
 
 # We assign the schema to the table and create the table in BigQuery.
 table = bigquery.Table(table_ref, schema=schema)
